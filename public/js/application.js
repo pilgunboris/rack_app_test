@@ -46,45 +46,34 @@ $(function () {
       },
       function (data, status) {
         data = JSON.parse(data)
-        console.log(data)
         $('#current_round').val(data['current_round']);
+        if(data['current_round'] == '1') {
+          $('#show_hint_link').show();
+        }
         if(data['won']) {
           $('#result').text("You won!");
+          $('#game_in_progress').hide();
         }
         else if (!data['lost']) {
           $('#result').text(data['round_result']);
         }
         else if (data['lost']) {
           $('#result').text('You lost! Try again.');
+          $('#game_in_progress').hide();
         }
-
+        $('#attempts_left').text(data['attempts_left']);
       });
   });
 
-      //   {
-      //   current_round: (@current_round + 1),
-      //   attempts_left: (DEFAULT_ATTEMPTS_COUNT - @current_round),
-      //   won: won?,
-      //   lost: lost?,
-      //   round_result: prepare_round_result,
-      //   hint_shown: false # TODO: write this to file
-      // }
-
-
-
-
-
-  $('#hint').click(function (e) {
+  $('#show_hint_link').click(function (e) {
     e.preventDefault();
-    $.post('/hint',
-      {
-      },
-      function (data, status) {
+    url = '/hint?numbers=' + $('#user_input').val() + '&current_round=' + $('#current_round').val()
+
+    $.get(url, function (data, status) {
         data = JSON.parse(data)
-        $('#hint_text').val(data['hint'])
-        if(data['hint_shown'] == 'true') {
-          $('#hint_link').hide
-        }
+        $('#show_hint').text(data['hint']);
+        $('#show_hint_link').hide();
+        $('#hint_block').show();
       });
   });
 });

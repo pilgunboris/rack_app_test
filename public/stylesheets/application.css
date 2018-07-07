@@ -1,5 +1,18 @@
 html, body {
   background: url('/images/background.png');
+
+}
+
+button.number {
+  margin: 15px 5px 5px 0px;
+  width: 40px;
+  height: 40px;
+}
+
+button.send {
+  margin: 15px 5px 5px 0px;
+  width: 100px;
+  height: 100px;
 }
 
 

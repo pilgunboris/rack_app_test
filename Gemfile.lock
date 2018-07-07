@@ -1,12 +1,13 @@
+GIT
+  remote: https://github.com/pilgunboris/codebreaker
+  revision: c0520925639ef5dd0d28455ed26f02aebca266a4
+  specs:
+    codebreaker (0.1.0)
+
 PATH
   remote: .
   specs:
     rack_app (0.1.0)
-
-PATH
-  remote: /opt/projects/other_projects/codebreaker
-  specs:
-    codebreaker (0.1.0)
 
 GEM
   remote: https://rubygems.org/
